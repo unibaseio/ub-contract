@@ -68,19 +68,25 @@ const config: HardhatUserConfig = {
         //     url: process.env.RPC_URL_ARB_SEPOLIA || 'https://arbitrum-sepolia.gateway.tenderly.co',
         //     accounts,
         // },
+        'eth-mainnet': {
+            eid: EndpointId.ETHEREUM_V2_MAINNET,
+            url: process.env.RPC_URL_ETHEREUM_MAINNET || 'https://ethereum-rpc.publicnode.com',
+            accounts,
+            oftAdapter: {
+                // tokenAddress: '0x229E0bb68c3D34a5160dA79c0748f3e21eFCd558', // Set the token address for the OFT adapter
+                tokenAddress: '0x00897631fF4F55Cf7A1877555064664E7Cc7fDcd'
+            },
+        },
         'bsc-mainnet': {
             eid: EndpointId.BSC_V2_MAINNET,
             url: process.env.RPC_URL_BSC_MAINNET || 'https://bsc-rpc.publicnode.com',
             accounts,
-            oftAdapter: {
-                tokenAddress: '0x1B600603BC1629CC14963A764382bB5ebBDe5C02', // Set the token address for the OFT adapter
-            },
         },
-        'base-mainnet': {
-            eid: EndpointId.BASE_V2_MAINNET,
-            url: process.env.RPC_URL_BASE_MAINNET || 'https://base-rpc.publicnode.com',
-            accounts,
-        },
+        // 'base-mainnet': {
+        //     eid: EndpointId.BASE_V2_MAINNET,
+        //     url: process.env.RPC_URL_BASE_MAINNET || 'https://base-rpc.publicnode.com',
+        //     accounts,
+        // },
         hardhat: {
             // Need this for testing because TestHelperOz5.sol is exceeding the compiled contract size limit
             allowUnlimitedContractSize: true,

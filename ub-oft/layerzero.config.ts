@@ -20,13 +20,12 @@ import type { OmniPointHardhat } from '@layerzerolabs/toolbox-hardhat'
  *         },
  *     },
  */
-const bscContract: OmniPointHardhat = {
-    eid: EndpointId.BSC_V2_MAINNET,
+const ethContract: OmniPointHardhat = {
+    eid: EndpointId.ETHEREUM_V2_MAINNET,
     contractName: 'UBOFTAdapter',
 }
-
-const baseContract: OmniPointHardhat = {
-    eid: EndpointId.BASE_V2_MAINNET,
+const bscContract: OmniPointHardhat = {
+    eid: EndpointId.BSC_V2_MAINNET,
     contractName: 'UBOFT',
 }
 
@@ -49,8 +48,8 @@ const EVM_ENFORCED_OPTIONS: OAppEnforcedOption[] = [
 // i.e. if you declare A,B there's no need to declare B,A
 const pathways: TwoWayConfig[] = [
     [
-        bscContract, // Chain A contract
-        baseContract, // Chain B contract
+        ethContract, // Chain A contract
+        bscContract, // Chain B contract
         [['LayerZero Labs'], []], // [ requiredDVN[], [ optionalDVN[], threshold ] ]
         [1, 1], // [A to B confirmations, B to A confirmations]
         [EVM_ENFORCED_OPTIONS, EVM_ENFORCED_OPTIONS], // Chain B enforcedOptions, Chain A enforcedOptions
@@ -61,7 +60,7 @@ export default async function () {
     // Generate the connections config based on the pathways
     const connections = await generateConnectionsConfig(pathways)
     return {
-        contracts: [{ contract: bscContract }, { contract: baseContract }],
+        contracts: [{ contract: ethContract }, { contract: bscContract }],
         connections,
     }
 }
