@@ -74,7 +74,7 @@ const config: HardhatUserConfig = {
             accounts,
             oftAdapter: {
                 // tokenAddress: '0x229E0bb68c3D34a5160dA79c0748f3e21eFCd558', // Set the token address for the OFT adapter
-                tokenAddress: '0x7645e2B45cd75CF2F1C00dff36cD640F434f7167'
+                tokenAddress: '0x5CFEc422BcF5C749a0EfF9872Dd04484739f110B'
             },
         },
         'bsc-mainnet': {

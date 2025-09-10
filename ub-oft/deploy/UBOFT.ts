@@ -44,7 +44,7 @@ const deploy: DeployFunction = async (hre) => {
         from: deployer,
         args: [
             'Unibase Testnet', // name
-            'UB', // symbol
+            'UBT', // symbol
             endpointV2Deployment.address, // LayerZero's EndpointV2 address
             deployer, // owner
         ],
