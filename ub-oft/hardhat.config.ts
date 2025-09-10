@@ -4,7 +4,7 @@
 // - Duplicate .env.example file and name it .env
 // - Fill in the environment variables
 import 'dotenv/config'
-
+import "@nomicfoundation/hardhat-verify";
 import 'hardhat-deploy'
 import 'hardhat-contract-sizer'
 import '@nomiclabs/hardhat-ethers'
@@ -97,6 +97,16 @@ const config: HardhatUserConfig = {
             default: 0, // wallet address of index[0], of the mnemonic in .env
         },
     },
+    etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
+        apiKey: "43579F2H94TU55T6HMZ9SKGCEXQXUJQ3NR"
+    },
+    sourcify: {
+    // Disabled by default
+    // Doesn't need an API key
+        enabled: true
+    }
 }
 
 export default config
