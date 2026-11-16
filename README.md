@@ -106,7 +106,11 @@ The ERC-20 was audited by PeckShield. The report is published in full:
 Vulnerabilities go to **security@unibase.com**, which is also published under RFC 9116
 at [unibase.com/.well-known/security.txt](https://unibase.com/.well-known/security.txt).
 
-> `ub.sol` carries `@custom:security-contact security@openledger.xyz` in its NatSpec.
-> That address is a leftover from the template the contract was written from and is not
-> ours. It is left untouched on purpose: the source is verified on block explorers, and
-> editing even a comment changes the hash they matched against. Use the address above.
+> **The contract source says otherwise, and that is not the address to use.** Both
+> copies of the token source — `ub.sol` and `remix/contracts/ub.sol`, which are byte-for-byte
+> identical — carry `@custom:security-contact security@openledger.xyz` in their NatSpec.
+> It is a leftover from the template the contract was written from.
+>
+> Neither file is edited, on purpose: the source is verified on block explorers, and
+> changing even a comment changes the hash they matched against. The deployed bytecode
+> cannot be changed either way. Reports go to **security@unibase.com**.
