@@ -73,8 +73,17 @@ const config: HardhatUserConfig = {
             url: process.env.RPC_URL_ETHEREUM_MAINNET || 'https://ethereum-rpc.publicnode.com',
             accounts,
             oftAdapter: {
-                // tokenAddress: '0x229E0bb68c3D34a5160dA79c0748f3e21eFCd558', // Set the token address for the OFT adapter
-                tokenAddress: '0x5CFEc422BcF5C749a0EfF9872Dd04484739f110B'
+                // The adapter on Ethereum must wrap the real UB token. Verified on-chain
+                // 2026-11-16 (eth_call, Ethereum mainnet):
+                //   0x6944E1DF6Bf5972305f9Ab25dF47ef10De01bcc8
+                //     name "Unibase", symbol "UB", decimals 18, totalSupply 10,000,000,000
+                //
+                // This entry used to read 0x5CFEc422BcF5C749a0EfF9872Dd04484739f110B, which is
+                // name "Unibase Test", symbol "UBT" — a test token, on a network key that says
+                // mainnet. The commented line above it, 0x229E0bb68c3D34a5160dA79c0748f3e21eFCd558,
+                // is "UnibaseTest"/"UBTest" and is equally not it. Both are left recorded here
+                // rather than deleted, so nobody restores one of them from an old diff.
+                tokenAddress: '0x6944E1DF6Bf5972305f9Ab25dF47ef10De01bcc8'
             },
         },
         'bsc-mainnet': {
